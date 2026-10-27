@@ -35,7 +35,7 @@ async function HomeContent() {
         </p>
 
         {user ? (
-          <div className="mt-8">
+          <div className="mt-8 space-y-3">
             {user.image && (
               <Image
                 src={user.image}
@@ -66,6 +66,28 @@ async function HomeContent() {
                 Sign out
               </button>
             </form>
+
+             <form
+    action={async () => {
+      "use server";
+      await signIn("facebook");
+    }}
+  >
+    <button className="w-full rounded-lg bg-blue-600 p-3 text-white">
+      Continue with Facebook
+    </button>
+  </form>
+
+             <form
+    action={async () => {
+      "use server";
+      await signIn("twitter");
+    }}
+  >
+    <button className="w-full rounded-lg bg-blue-400 p-3 text-white">
+      Continue with Twitter
+    </button>
+  </form>
           </div>
         ) : (
           <form
